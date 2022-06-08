@@ -1,0 +1,35 @@
+vich_uploader:
+  db_driver: orm
+
+  mappings:
+    article_images:
+      uri_prefix: /images/article
+      upload_destination: "%kernel.project_dir%/public/uploads/images/article"
+      namer:
+        service: Vich\UploaderBundle\Naming\PropertyNamer
+        options: { property: "slug" }
+    category_article_images:
+      uri_prefix: /images/categories_article
+      upload_destination: "%kernel.project_dir%/public/uploads/images/categories_article"
+      namer:
+        service: Vich\UploaderBundle\Naming\PropertyNamer
+        options: { property: "slug" }
+    category_service_images:
+      uri_prefix: /images/categories_service
+      upload_destination: "%kernel.project_dir%/public/uploads/images/categories_service"
+      namer:
+        service: Vich\UploaderBundle\Naming\PropertyNamer
+        options: { property: "slug" }
+    jobs_images:
+      uri_prefix: /images/jobs_images
+      upload_destination: "%kernel.project_dir%/public/uploads/images/jobs_images"
+      namer:
+        service: Vich\UploaderBundle\Naming\PropertyNamer
+        options: { property: "slug" }
+
+    candidature_cv:
+      uri_prefix: "%app.path.candidature_cv%"
+      upload_destination: "%kernel.project_dir%/public%app.path.candidature_cv%"
+    offre_pdf:
+      uri_prefix: "%app.path.offre_pdf%"
+      upload_destination: "%kernel.project_dir%/public%app.path.offre_pdf%"

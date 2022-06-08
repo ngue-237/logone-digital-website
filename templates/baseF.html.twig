@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html {{ sonata_seo_html_attributes() }}>
+  <head {{ sonata_seo_head_attributes() }}>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+   <meta name="google-site-verification" content="094zyDsthZg_lOjX_s60GlzSR-4kmBPwv_z48siK2iM" />
+<meta name="msvalidate.01" content="20F7DC6269B752CA095C33ACC2C7182E" />
+<meta name="facebook-domain-verification" content="pea12lgugsm5bb610dqcyluk5d0bxp" />
+    <!-- seo -->
+
+    {% block meta %}{% endblock %}
+    <!-- Canolique link -->
+    {% block canonical %} {% endblock %}
+    <!-- end Canolique link -->
+    <!-- seo -->
+    <title>{% block title %}{% endblock %}</title>
+    {# Run `composer require symfony/webpack-encore-bundle` to start using
+    Symfony UX #}
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}"
+    />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ asset('assetF/') }}css/bootstrap.css" />
+    <link
+      rel="stylesheet"
+      href="{{ asset('assetF/') }}css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ asset('assetF/') }}vendors/linericon/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ asset('assetF/') }}vendors/owl-carousel/owl.carousel.min.css"
+    />
+    <link
+      href="//fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ asset('assetF/') }}css/magnific-popup.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ asset('assetF/') }}vendors/nice-select/css/nice-select.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="{{ asset('assetF/') }}css/style.min.css" />
+    <link rel="stylesheet" href="{{ asset('assetF/') }}css/custom.min.css" />
+    <link rel="icon" href="{{ asset('assetF') }}/img/Logone-logo-fav.png" />
+    <link
+      rel="stylesheet"
+      href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"
+      defer
+    ></script>
+    {% block stylesheets %} {#
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>"
+    />
+    #} {#
+    {{
+      encore_entry_link_tags("app")
+    }}
+    #} {% endblock %} {#
+    {{
+      encore_entry_script_tags("app")
+    }}
+    #}
+
+    <!-- Matomo -->
+    <script>
+      var _paq = (window._paq = window._paq || []);
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["trackPageView"]);
+      _paq.push(["enableLinkTracking"]);
+      (function () {
+        var u = "//localhost/matomo-latest/matomo/";
+        _paq.push(["setTrackerUrl", u + "matomo.php"]);
+        _paq.push(["setSiteId", "1"]);
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.async = true;
+        g.src = u + "matomo.js";
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+  </head>
+
+  <body class="{% block bodyClass %} {% endblock %}">
+    <!-- Load Facebook SDK for JavaScript -->
+    {{ include("include/frontoffice/header.html.twig") }}
+    {% block content %} {% endblock %}
+    
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="{{ asset('assetF/') }}js/jquery-3.2.1.min.js"></script>
+    <script src="{{ asset('assetF/') }}js/popper.js"></script>
+    <script src="{{ asset('assetF/') }}js/bootstrap.min.js"></script>
+    <script src="{{ asset('assetF/') }}js/stellar.js"></script>
+    <script src="{{
+        asset('assetF/')
+      }}js/jquery.magnific-popup.min.js"></script>
+
+    <script src="{{
+        asset('assetF/')
+      }}vendors/isotope/imagesloaded.pkgd.min.js"></script>
+    <script src="{{ asset('assetF/') }}vendors/isotope/isotope-min.js"></script>
+    <script src="{{
+        asset('assetF/')
+      }}vendors/owl-carousel/owl.carousel.min.js"></script>
+    <script src="{{ asset('assetF/') }}js/jquery.ajaxchimp.min.js"></script>
+    <script src="{{ asset('assetF/') }}js/mail-script.js"></script>
+    <!--gmaps Js-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="{{ asset('assetF/') }}js/gmaps.min.js"></script>
+
+    <script src="{{ asset('assetF/') }}js/theme.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--gmaps Js-->
+
+    <script src="{{ asset('assetF/') }}js/gmaps.min.js"></script>
+    <script src="{{
+        asset('jquery-collapser-master/')
+      }}src/jquery.collapser.js"></script>
+    <script src="{{ asset('assetF/') }}js/theme.js"></script>
+    <script src="{{
+        asset('bundles/mercuryseriesflashy/js/flashy.js')
+      }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    {% block javascripts %} {% endblock %}
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script
+      type="text/javascript"
+      src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6248b3a954a9f1c6"
+    ></script>
+    <script src="{{
+        asset('bundles/mercuryseriesflashy/js/flashy.js')
+      }}"></script>
+    {{ include("@MercurySeriesFlashy/flashy.html.twig") }}
+  </body>
+</html>
+				

@@ -1,0 +1,129 @@
+{% extends 'baseF.html.twig'%} {% block title %} Details offre emplois | Logone
+{% endblock %} {% block meta %}
+{{ sonata_seo_metadatas() }}
+{% endblock %} {% block content %}
+
+<!--================ Start Header Area =================-->
+{% include('include/frontoffice/header.html.twig')%}
+
+<!--================Blog Area =================-->
+<section class="blog_area single-post-area section_gap" style="margin-bottom:250px" >
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 posts-list">
+        <div class="col-lg-12">
+							<div class="feature-img">
+								<img class="img-fluid" src="{{asset('uploads/images/jobs_images/' ~ job.image ) | imagine_filter("blog_image")
+              }}" alt=""/>  
+							</div>
+					</div>
+        <div class="single-post row">
+          <div class="col-lg-3 col-md-3">
+            <div class="blog_info text-right">
+              <ul class="blog_meta list">
+                <li>
+                  <a href="#">Logone<i class="lnr lnr-user"></i></a>
+                </li>
+                <li>
+                  <a href="#"
+                    >12 Dec, 2017<i class="lnr lnr-calendar-full"></i
+                  ></a>
+                </li>
+              </ul>
+              <ul class="social-links">
+                <li>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-9 blog_details ">
+            <h2 style="color: #3FE1FF;">{{ job.titre }}</h2>
+            <p class="excert">
+              {{ job.description | raw }}
+            </p>
+            <h2 style="color: #3FE1FF;">Conditions préalables</h2>
+            <div class="row">
+              <div class="col-lg-6">Lieu&nbsp;:</div>
+              <div class="col-lg-6">{{ job.location }}</div>
+              <div class="col-lg-6">Poste disponible&nbsp;:</div>
+              <div class="col-lg-6">{{ job.nombrePoste }}</div>
+              <div class="col-lg-6">Valable jusqu'au&nbsp;:</div>
+              <div class="col-lg-6">
+                {{ job.date_expiration |date("m/d/Y") }}
+              </div>
+            </div>
+            <div style="text-align: center">
+              <a
+                title="lien vers notre offre d'emplois  : {{ job.slug }}"
+                href=""
+                class="primary_btn"
+                style="margin-top: 10px" data-toggle="modal" data-target="#exampleModalCenter"
+              >
+                <span >Je postule</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="blog_right_sidebar">
+          <aside class="single_sidebar_widget post_category_widget">
+            <h4 class="widget_title">Offre d'emplois</h4>
+            <ul class="list cat-list">
+              {% for item in allJobs %}
+              <li>
+                <a
+                  href="{{ path('jobdetails', { slug: item.slug }) }}"
+                  class="d-flex justify-content-between"
+                >
+                  <p>{{ item.titre }}</p>
+                  <p>{{ loop.index }}</p>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            <div class="br"></div>
+          </aside>
+          <aside class="single_sidebar_widget post_category_widget">
+            <h4 class="widget_title">Services</h4>
+            <ul class="list cat-list">
+              {% for catgService in allCatgService %}
+              <li>
+                <a title="lien vers notre offre de service : {{catgService.slug}}" href="{{path("services",{slug:catgService.slug})}}" class="d-flex justify-content-between">
+                  <p>{{ catgService.designation }}</p>
+                  <p>{{ loop.index }}</p>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            <div class="br"></div>
+          </aside>
+          <aside class="single_sidebar_widget post_category_widget">
+            <h4 class="widget_title">Blog</h4>
+            <ul class="list cat-list">
+              {% for catgArticle in allCatgsArticle %}
+              <li>
+                <a title="lien vers tout nos article sur la thématique : {{catgArticle.slug}} " href="{{path("blog_by_categorie",{slug:catgArticle.slug})}}" class="d-flex justify-content-between">
+                  <p>{{ catgArticle.title }}</p>
+                  <p>{{ loop.index }}</p>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            <div class="br"></div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% set submit_url = path('apply', { slug: job.slug }) %}
+{% include 'frontoffice/candidature/modal.html.twig' with {url: submit_url} %}
+<!--================Footer Area =================-->
+{{ include("include/frontoffice/footer.html.twig") }}
+#} {% endblock %}
+

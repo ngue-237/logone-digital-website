@@ -1,0 +1,283 @@
+{% extends 'baseF.html.twig'%}
+{% block meta %}
+{{ sonata_seo_title() }}
+{{ sonata_seo_metadatas() }}
+{{ sonata_seo_link_canonical() }}
+<link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
+
+{% endblock %}
+
+{% block content %} 
+
+<style>
+  
+
+  @media only screen and (max-width: 310px) {
+    .home-banner-img {
+      margin-bottom: 100px;
+      margin-top: 100px;
+    }
+  }
+  @media only screen and (min-width: 310px) {
+    .home-banner-img {
+      margin-bottom: 200px;
+      margin-top: 200px;
+    }
+  }
+
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .mt-title{
+      margin-top: 100px;
+    }
+  }
+</style>
+
+<section class="about_area section_gap">
+  <div class="banner_inner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-12 order-2 order-lg-1">
+          <div class="main_title text-left mt-title" >
+            <h2 class="typo-list">PARTENAIRE <br>
+              DE VOTRE CROISSANCE</h2>
+            <p class="sample-text" style="text-align:justify">
+              <span style="color: #4cd3e3; font-weight:bold">LOGONE</span> est une agence de communication digitale qui vous accompagne dans votre stratégie digitale, E-réputation et l'augmentation de votre chiffre d'affaires. 
+              Notre expertise s'étend aux leviers majeurs liés au développement de votre <span style="color: #4cd3e3; font-weight:bold">visibilité digitale</span> et à la <span style="color: #4cd3e3; font-weight:bold">gestion de la relation client</span>, 
+              à savoir: la création de votre site internet, l'optimisation de votre visibilité Google à travers le référencement naturel (SEO) et 
+              référencement payant (Google Ads et Google Shopping), l'amélioration de votre présence sur les réseaux sociaux, et le suivie virtuel de vos clients (tout au long de leur processus d'achat). 
+            </p>
+            <div >
+              <a style="margin-right: 10px" class="genric-btn success  circle" href="{{absolute_url(path("about"))}}"
+                ><span>Qui sommes nous ?</span></a
+              >
+              <a class="genric-btn success-border  circle" href="#ns-solutions"
+                ><span>Nos solutions</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-12 order-1 order-lg-2 home-banner-img"
+        style="position: relative">
+          
+            <img
+              style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            "
+              class="img-fluid"
+              src="{{ asset('assetF/') }}img/home-img.png"
+              alt=""
+            />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section >
+  <div class="whole-wrap row d-flex justify-content-center tableau-vs">
+  <div class="col-lg-10">
+    <div class="section-top-border" >
+      <div class="main_title">
+        <h2 class="mb-30 title_color" style="text-align: center;"> 8 Raisons de nous faire confiance</h2>
+      </div>
+				<div class="progress-table-wrap" style="border: 3px solid #edf3fd">
+					<div class="progress-table">
+						<div class="table-head">
+							<div class="serial"></div>
+							<div class="country">Un accompagnement <br> personnalisé</div>
+							<div class="visit">
+              Logone <br>
+              Partenaire privilégié
+              </div>
+							<div class="percentage">
+              Agence <br>
+              Traditionnelle
+            </div>
+						</div>
+            <div class="table-row">
+							<div class="serial">01</div>
+							<div class="country">Suivi personnalisé après l'acquisition de vos prospects dans le but de les convertir en clients.</div>
+							<div class="visit"><i class="fas fa-check-circle" style="color:rgb(6, 212, 6); font-size:40px"></i></div>
+							<div class="percentage">
+								<i class="fas fa-times-circle" style="font-size:40px"></i>
+							</div>
+						</div>
+            <div class="table-row">
+							<div class="serial">02</div>
+							<div class="country"> Définition de résultats <br>  atteignables.</div>
+							<div class="visit"><i class="fas fa-check-circle" style="color: rgb(6, 212, 6); font-size:40px"></i></div>
+							<div class="percentage">
+								<i class="fas fa-times-circle" style="font-size:40px"></i>
+							</div>
+						</div>
+            <div class="table-row">
+							<div class="serial">03</div>
+							<div class="country"> Disponibilité au téléphone <br>  de 9h à 18h.</div>
+							<div class="visit"><i class="fas fa-check-circle" style="color: rgb(6, 212, 6); font-size:40px"></i></div>
+							<div class="percentage">
+								<i class="fas fa-times-circle" style="font-size:40px"></i>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">04</div>
+							<div class="country"> Un seul interlocuteur <br> par client.</div>
+							<div class="visit"><i class="fas fa-check-circle" style="color: rgb(6, 212, 6); font-size:40px"></i></div>
+							<div class="percentage">
+								<i class="fas fa-times-circle" style="font-size:40px"></i>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">05</div>
+							<div class="country"> Un contrat <br> sans engagement.</div>
+							<div class="visit"><i class="fas fa-check-circle" style="color: rgb(6, 212, 6); font-size:40px"></i></div>
+							<div class="percentage">
+								<i class="fas fa-times-circle" style="font-size:40px"></i>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">06</div>
+							<div class="country"> Un rapport mensuel<br>  de performances.</div>
+							<div class="visit" ><i class="fas fa-check-circle" style="color: rgb(6, 212, 6); font-size:40px; "></i></div>
+							<div class="percentage">
+								<i class="fas fa-check-circle" style="color: rgb(6, 212, 6); font-size:40px"></i>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">07</div>
+							<div class="country"> Éducation du client <br> aux meilleures pratiques.</div>
+							<div class="visit"><i class="fas fa-check-circle" style="color: rgb(6, 212, 6); font-size:40px"></i></div>
+							<div class="percentage">
+								<i class="fas fa-times-circle" style="font-size:40px;"></i>
+							</div>
+						</div>
+						<div class="table-row">
+							<div class="serial">08</div>
+							<div class="country"> Rendez-vous physiques <br> avec nos clients.</div>
+							<div class="visit"><i class="fas fa-check-circle" style="color: rgb(6, 212, 6); font-size:40px"></i></div>
+							<div class="percentage">
+								<i class="fas fa-check-circle" style="color: rgb(6, 212, 6); font-size:40px"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+	</div>
+  </div>
+</div>
+</section>
+<!--================ End Home Banner Area =================-->
+
+<section class="features_area">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <div class="main_title">
+          <h2 id="ns-solutions">En quoi pouvons-nous vous aider?</h2>
+          <p class="sample-text">
+             Nous vous <span style="color: #4cd3e3; font-weight:bold; "> conseillons</span> , <span style="color: #4cd3e3; font-weight:bold; ">accompagnons</span> et vous aidons a  <span style="color: #4cd3e3; font-weight:bold ; "> obtenir</span>  des résultats à la hauteur de vos attentes.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row feature_inner">
+      {% for catg in categoriesService %}
+      <div class="col-lg-3 col-md-6">
+        <a
+          title="découvrez notre offre de service dans : {{ catg.slug }} "
+          class="text-font"
+        >
+          <div class="feature_item">
+            <h4>
+              {{ catg.designation }}
+            </h4>
+            <p class="sample-text">
+              {{ catg.description | striptags | slice(0,200)  | raw  }}
+              ...
+            </p>
+            <a
+              title="lien nos services de la catégorie : {{ catg.slug }}"
+              href="{{ absolute_url(path('services', { slug: catg.slug })) }}"
+              class="genric-btn success  circle"
+            >
+              <span>Voir plus</span>
+            </a>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+      <div style="text-align: center">
+        <a
+          title="lien vers toutes nos offres de service "
+          href="{{ absolute_url(path('categorie_service_all') )}}"
+          class="genric-btn success  circle"
+        >
+          <span>Voir Toutes nos offres</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features_area"  >
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <div class="main_title">
+          <h2>Nos actualités</h2>
+          <p class="sample-text">
+            Suivez nos dernières actualités sur le marketing digital, la gestion de la relation client. 
+            Au programme : SEO, SEA, google Ads, Social Media et CRM (Customer Relationship Management). 
+            Notre blog à pour vocation de partager les dernières évolutions relatives au web marketing, CRM.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      {%for category in catgoriesArticle %}
+      <div class="col-lg-4">
+        <div class="categories_post">
+          <img
+            src="{{asset('uploads/images/categories_article/') ~ category.image}}"
+            alt="{{ category.image }}"
+          />
+          <div class="categories_details">
+            <div class="categories_text">
+              <a
+                title="lien vers tout nos articles sur la thématique : {{
+                  category.slug
+                }}"
+              >
+                <h5>{{ category.title }}</h5>
+              </a>
+              <div class="border_line"></div>
+              <p>{{ category.content | striptags | slice(0,90)  | raw  }}</p>
+              <a
+                title="lien vers notre article sur : {{ category.slug }}"
+                href="{{ absolute_url(path('blog_by_categorie', { slug: category.slug })) }}"
+                class="genric-btn success  circle"
+              >
+                <span>Voir plus</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+      <div style="text-align: center; margin-top: 30px; margin-bottom: 150px">
+        <a
+          title="lien vers toutes nos offres de service "
+          href="{{ path('categorie_service_all') }}"
+          class="genric-btn success  circle"
+        >
+          <span>Toutes nos actualités</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{{ include("include/frontoffice/footer.html.twig") }}
+{% endblock %}

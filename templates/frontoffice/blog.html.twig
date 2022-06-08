@@ -1,0 +1,73 @@
+{% extends 'baseF.html.twig'%} {% block meta %}
+{{ sonata_seo_title() }}
+{{ sonata_seo_metadatas() }}
+{% endblock %} {% block content %} {% block bodyClass %} blog_version{% endblock
+%}
+
+<!--================Blog Categorie Area =================-->
+<section class="blog_categorie_area section_gap_top">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <div class="main_title">
+          <h2>Nos actualités</h2>
+          <p>
+            Suivez nos dernières actualités sur le marketing digital, la gestion
+            de la relation client. Au programme : SEO, SEA, google Ads, Social
+            Media et CRM (Customer Relationship Management). Notre blog à pour
+            vocation de partager les dernières évolutions relatives au web
+            marketing, CRM.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      {%for category in catgoriesArticle %}
+      <div class="col-lg-4">
+        <div class="categories_post">
+          <img
+            src="{{asset('uploads/images/categories_article/') ~ category.image}}"
+            alt="{{ category.image }}"
+          />
+          <div class="categories_details">
+            <div class="categories_text">
+              <a
+                href="{{
+                  absolute_url(
+                    path('blog_by_categorie', { slug: category.slug })
+                  )
+                }}"
+              >
+                <h5>{{ category.title }}</h5>
+              </a>
+              <div class="border_line"></div>
+              <p>
+                {{ category.content | striptags | slice(0,90)  | raw  }}
+              </p>
+              <a
+                title="lien vers notre article sur : {{ category.slug }}"
+                href="{{
+                  absolute_url(
+                    path('blog_by_categorie', { slug: category.slug })
+                  )
+                }}"
+                class="genric-btn success circle"
+              >
+                <span>Voir plus</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+      <div class="blog-pagination justify-content-center d-flex">
+        {{ knp_pagination_render(catgoriesArticle) }}
+      </div>
+    </div>
+  </div>
+</section>
+<!--================Blog Categorie Area =================-->
+
+{{ include("include/frontoffice/footer.html.twig") }}
+
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends 'baseF.html.twig'%} {% block meta %}
+{{ sonata_seo_title() }}
+{{ sonata_seo_metadatas() }}
+
+<link
+  rel="canonical"
+  href="{{ app.request.getSchemeAndHttpHost ~ app.request.baseUrl ~ app.request.pathInfo }}"
+/>
+{% endblock %} {% block content %}
+<style>
+  @media only screen and (max-width: 310px) {
+    .home-banner-img {
+      margin-bottom: 100px;
+      margin-top: 100px;
+    }
+  }
+  @media only screen and (min-width: 310px) {
+    .home-banner-img {
+      margin-bottom: 200px;
+      margin-top: 200px;
+    }
+  }
+
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .main_title-banner {
+      margin-top: 100px;
+    }
+  }
+</style>
+
+<section class="about_area section_gap">
+  <div class="banner_inner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-12 order-2 order-lg-1">
+          <div class="main_title main_title-banner text-left">
+            <h2 class="typo-list">
+              Qui <br />
+              sommes-nous ?
+            </h2>
+            <div>
+              <p class="sample-text" style="text-align: justify">
+                Jeune, dynamique et animée par une grande ambition,
+                <span class="text-footer-style"> LOGONE </span> est une équipe
+                de personnes d'origine et de cultures différentes. Notre savoir
+                réside dans notre capacité à allier
+                <span class="text-footer-style">talents</span>,
+                <span class="text-footer-style">nouvelles technologies</span> et
+                <span class="text-footer-style">efficacité</span> afin d'offrir
+                des services et des compétences adaptées aux besoins nos clients
+                et partenaires.
+              </p>
+              <p class="sample-text" style="text-align: justify">
+                Ainsi notre <span class="text-footer-style">expertise</span> est
+                résidée dans : la création de votre site internet,
+                l'optimisation de votre visibilité Google à travers le
+                référencement naturel (SEO) et référencement payant (google
+                Ads), l'amélioration de votre présence sur les réseaux sociaux,
+                et gestion de la relation client.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="col-lg-5 col-12 order-1 order-lg-2 home-banner-img"
+          style="position: relative"
+        >
+          <img
+            style="
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            "
+            class="img-fluid"
+            src="{{ asset('assetF/') }}img/logone-team-work.png"
+            alt="logone mindset"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="about_area">
+  <div class="container" style="text-align: center">
+    <div class="main_title">
+      <h2>MINDSET LOGONE</h2>
+      <p>
+        Chez <span class="text-footer-style"> LOGONE</span> ce qui nous
+        <span class="text-footer-style"> rend unique </span> et nous
+        <span class="text-footer-style">motive</span> c'est notre vision et les
+        valeurs auxquelles nous sommes attachées.
+      </p>
+    </div>
+    <div class="row" style="margin-top: -10px">
+      <img
+        src="{{ asset('assetF/') }}img/logone-roadmap.png"
+        alt="infographie RSE LOGONE"
+      />
+    </div>
+  </div>
+  <br />
+</section>
+<section class="about_area" style="margin-bottom: 200px; margin-top: 20px">
+  <div class="container" style="text-align: center; word-wrap: break-word">
+    <div class="main_title">
+      <h2>les cinq piliers de notre engagement RSE</h2>
+    </div>
+    <div class="row" style="margin-top: -20px">
+      <img
+        src="{{ asset('assetF/') }}img/RSE_LOGONE.jpg"
+        alt="infographie RSE LOGONE"
+      />
+    </div>
+  </div>
+  <br />
+</section>
+
+<!--================ End About Us Area =================-->
+
+<!--================Footer Area =================-->
+{{ include("include/frontoffice/footer.html.twig") }}
+{% endblock %}

@@ -1,0 +1,138 @@
+{% extends 'baseF.html.twig'%} {% block meta %}
+<link
+  rel="canonical"
+  href="{{ app.request.getSchemeAndHttpHost ~ app.request.baseUrl ~ app.request.pathInfo }}"
+/>
+
+{{ sonata_seo_title() }}
+{{ sonata_seo_metadatas() }}
+<meta
+  name="description"
+  content="{{categories.description | striptags | slice(0,150)  | raw }} "
+/>
+<meta
+  property="og:description"
+  content="{{categories.description | striptags | slice(0,150)  | raw }}"
+/>
+{% endblock %} {% block content %}
+<style>
+  p.text-font {
+    line-height: 26px;
+    font-size: 15px;
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+  }
+
+  @media only screen and (max-width: 310px) {
+    .service-img {
+      margin-bottom: 100px;
+      margin-top: 100px;
+    }
+  }
+  @media only screen and (min-width: 310px) {
+    .service-img {
+      margin-bottom: 200px;
+      margin-top: 200px;
+    }
+  }
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .main_title-banner {
+      margin-top: 100px;
+    }
+  }
+</style>
+<!--================ Start Features Area =================-->
+<section class="features_area section_gap_top">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div
+        class="main_title main_title-banner col-lg-6 col-12 order-2 order-lg-1"
+      >
+        <h2>{{ categories.designation }}</h2>
+        <p class="text-font">
+          {{ categories.description | raw }}
+        </p>
+      </div>
+      <div
+        class="col-lg-6 col-12 order-1 order-lg-2 service-img"
+        style="position: relative"
+      >
+        <img
+          style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          "
+          src="{{ asset('/uploads/images/categories_service/' ~ categories.image) }}"
+          class="img-fluid"
+          alt="image parlant de {{ categories.designation }}"
+        />
+      </div>
+    </div>
+    <div class="whole-wrap">
+      <div class="container">
+        <div class="section-top-border text-right">
+          <div class="row main_title">
+            <h2>Nos expertise en matière de {{ categories.designation }}</h2>
+          </div>
+          <div class="row">
+            <div class="section-top-border text-right">
+              <div class="row">
+                <div class="col-md-9">
+                  {% set i= 0 %} {% for service in services%} {% set i= i+1 %}
+                  <div class="accordion col-lg-12 mt-2" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingThree">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseThree{{ i }}"
+                          aria-expanded="false"
+                          aria-controls="collapseThree"
+                        >
+                          {{ service.designation }}
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseThree{{ i }}"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          {{ service.description | raw }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12"></div>
+          </div>
+          <div class="row">
+            <div class="text-center">
+              <a
+                style="margin-top: 20px"
+                href="{{
+                  absolute_url(path('devis_add', { slug: categories.slug }))
+                }}"
+                class="genric-btn success circle"
+              >
+                <span>Je veux un devis</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--================ End Features Area =================-->
+<!--================ Start Testimonial Area =================-->
+
+{{ include("include/frontoffice/footer.html.twig") }}
+{% endblock %}

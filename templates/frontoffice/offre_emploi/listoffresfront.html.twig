@@ -1,0 +1,76 @@
+{% extends 'baseF.html.twig'%}
+{% block title %}
+	Rejoignez-nous | Logone
+{% endblock %}
+{% block meta %}
+<meta name="description" content="">
+<meta
+  name="keywords"
+  content="MARKETING DIGITAL, RELATION CLIENT, OFFRE EMPLOIS"
+/>
+{% endblock  %}
+{% block SS %}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+{% endblock %}
+{% block content %}
+
+	{% include('include/frontoffice/header.html.twig')%}
+	<!--================ Start Features Area =================-->
+	<section class="features_area section_gap_top" style="margin-bottom: 250px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="main_title">
+                        <h2>Toute nos offres d'emplois</h2>
+                        <p class="sample-text">
+                          Retrouver ici tout nos dernières offres d'emplois  
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% if list is empty %}
+				<p class="sample-text" style="text-align: center;"> Aucune Offre d'emplois pour l'instant</p>
+			{% else %}
+				<div class="row feature_inner">
+                {% for job in list %}
+				<div class="col-lg-3 col-md-6">
+                    <div class="feature_item">
+                        <h4 style="color: #3fe1ff;">
+							{{ job.titre }}
+						</h4>
+						<p>{{ job.description | striptags | slice(0,90)  | raw  }}</p>
+						
+							<a
+							class="genric-btn success-border circle"
+							href="{{ path('jobdetails', { slug: job.slug }) }}"
+							><span>Voir plus</span></a
+							>
+                    </div>
+                </div>
+				{% endfor %}
+            </div>
+			<div class="blog-pagination justify-content-center d-flex">
+			{{ knp_pagination_render(list) }}
+			</div>
+			{% endif %}
+        </div>
+    </section>
+</div>
+<script>
+$(document).ready(function(){
+	var textTruncates = $("#text-truncate")
+	console.log($("#text-truncate"))
+	for (const textTruncate of textTruncates) {
+		textTruncate.collapser({
+		mode: 'words',
+        truncate: 20
+		})
+	}
+    $("#text-truncate").collapser({
+        mode: 'words',
+        truncate: 20
+    });
+});
+</script>
+{{include('include/frontoffice/footer.html.twig')}}{% endblock %}

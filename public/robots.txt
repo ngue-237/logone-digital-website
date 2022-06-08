@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin
+Disallow: /admin-logone
+Disallow: /mentions-legales
+Disallow: /s-inscrire
+Disallow: /se-connecter
+Sitemap: https:://logonedigital.com/sitemap.xml

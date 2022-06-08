@@ -1,0 +1,175 @@
+{% extends 'baseF.html.twig'%} 
+{% block meta %}
+  {{ sonata_seo_title() }}
+  {{ sonata_seo_metadatas() }}
+  <meta name="description" content="{{categoryArticle | striptags | slice(0,300)  | raw}}">
+  <link
+    rel="canonical"
+    href="{{ app.request.getSchemeAndHttpHost ~ app.request.baseUrl ~ app.request.pathInfo }}"
+  />
+  
+ 
+{% endblock %}
+{%
+block content %}
+
+<!--================ Start Header Area =================-->
+
+
+<!--================Blog Area =================-->
+<section class="blog_area single-post-area section_gap" style="margin-bottom: 250px;">
+  <div class="container">
+    <div class="row" >
+      <div class="col-lg-8">
+        <div class="blog_left_sidebar" >
+          {%for article in articles%}
+          <article class="row blog_item">
+            <div class="col-md-3">
+              <div class="blog_info text-right">
+                <div class="post_tag">
+                  <a class="active">
+                    {{ article.categoryArticle.title }}
+                  </a>
+                  <i class="fas fa-newspaper"></i>
+                </div>
+                <ul class="blog_meta list">
+                  <li>
+                    <a>{{ article.author }}<i class="lnr lnr-user"></i> </a>
+                  </li>
+                  <li>
+                    <a
+                      >{{article.createdAt | date('d:m:Y')
+                      }}<i class="lnr lnr-calendar-full"></i>
+                    </a>
+                  </li>
+                  {#
+                  <li>
+                    <a>1.2M Views<i class="lnr lnr-eye"></i></a>
+                  </li>
+                  #}
+                  <li>
+                    <a
+                      >{{ article.comments | length }} Commentaires<i
+                        class="lnr lnr-bubble"
+                      ></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      >{{ article.likes | length }} Likes<i
+                        class="far fa-thumbs-up"
+                      ></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-9">
+              <div class="blog_post">
+                <img
+                  src="{{asset('uploads/images/article/' ~ article.image  ) | imagine_filter("blog_image") }}"
+                  alt="{{ article.title }}"
+                />
+                <div class="blog_details">
+                  <a href="{{ absolute_url(path('article_detail', { slug: article.slug })) }}">
+                    <h2>{{ article.title | title }}</h2>
+                  </a>
+                  <p>
+                    {{ article.content | striptags | slice(0,300)  | raw  }}...
+                  </p>
+                  <a title="lien vers notre article sur : {{ article.slug }}"
+                    href="{{ absolute_url(path('article_detail', { slug: article.slug })) }}"
+                    class="genric-btn success circle"
+                  >
+                    <span>Voir plus</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+          {%endfor%}
+          <div class="blog-pagination justify-content-center d-flex">
+            {{ knp_pagination_render(articles) }}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="blog_right_sidebar" >
+				<aside class="single_sidebar_widget popular_post_widget">
+					<h3 class="widget_title">Articles populaires</h3>
+					{% for articleByView in articleOrderByView %}
+						
+						<div class="media post_item">
+							<img src="{{asset('uploads/images/article/' ~ articleByView.image ) | imagine_filter('blog_min_image') }}" alt="image faissant référence au {{articleByView.title}} "/>
+							<div class="media-body">
+								<a href="{{ absolute_url(path('article_detail', { slug: articleByView.slug })) }}">
+									<h3>{{articleByView.title}} </h3>
+								</a>
+								<p>publié le
+									{{articleByView.createdAt | date('d/m/y')}}</p>
+							</div>
+						</div>
+					{% endfor %}
+
+					<div class="br"></div>
+				</aside>
+				
+				<aside class="single_sidebar_widget post_category_widget">
+					<h4 class="widget_title">Toutes nos thématiques</h4>
+					<ul class="list cat-list">
+						{% for categoryArticle in categoriesArticle %}
+							<li>
+								<a title="lien tout nos articles sur la thématique : {{categoryArticle.slug  }} " href="{{ absolute_url(path('blog_by_categorie', { slug: categoryArticle.slug })) }}" class="d-flex justify-content-between">
+									<p>{{ categoryArticle.title }}</p>
+									<p>{{ loop.index }}</p>
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+					<div class="br"></div>
+				</aside>
+        <aside class="single_sidebar_widget post_category_widget">
+          <h3 class="widget_title">Nos services</h3>
+					<ul class="list cat-list">
+						{% for categoryService in categoriesService %}
+							<li>
+								<a title="lien vers notre offre sur : {{categoryService.slug  }} " href="{{ absolute_url(path('services', { slug: categoryService.slug })) }}" class="d-flex justify-content-between">
+									<p>{{ categoryService.designation }}</p>
+									<p>{{ loop.index }}</p>
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+					<div class="br"></div>
+					</aside>
+				<aside class="single-sidebar-widget newsletter_widget">
+				<h4 class="widget_title">Newsletter</h4>
+				<p>
+					
+          Inscrire à notre newsletter afin d'être sur informer
+          sur les nouveaux article sur la même thématique
+				</p>
+				<div class="form-group d-flex flex-row">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+							</div>
+						</div>
+						<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Entrer votre email'"/>
+										</div>
+					<a href="#" class="bbtns">S'inscrire</a>
+				</div>
+				<p class="text-bottom">Vous pouvez vous inscrire à tout moment</p>
+				<div class="br"></div>
+			</aside>
+		</div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+<!--================Blog Area =================-->
+{{ include("include/frontoffice/footer.html.twig") }}
+
+{% endblock %}
